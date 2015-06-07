@@ -2,11 +2,28 @@ package com.sss.society.model;
 
 import java.util.List;
 
-public class Account {
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@org.hibernate.annotations.Entity
+@Table(name="Account")
+public class Account 
+{
+	@Id
+	@GeneratedValue(generator="native")
 	private Long id;
+	@Column(name="AccountId")
 	private String accountId;
+	
+	@Column(name="AccountName")
 	private String accountName;
+	@Column(name="AccountType")
 	private int accountType;
+	
+	@OneToMany(mappedBy="account")
 	private List<Customer> customers;
 	private Entity entity;
 	private AuditInfo auditInfo;
